@@ -238,6 +238,7 @@
             <div class="password-title">پەیوەندی پارێزراو</div>
             <div class="password-subtitle">تکایە پاسۆرد بنووسە بۆ کردنەوەی وێبسايتەکە:</div>
             
+            <!-- کڵیلی ئینتەری کیبۆرد لێرەدا کار دەکات -->
             <input type="password" id="passInput" class="password-input" placeholder="پاسۆرد لێرە بنووسە">
             <button class="submit-btn" onclick="checkPassword()">کردنەوە (Enter)</button>
             <div id="errorMsg" class="error-msg">❌ پاسۆردەکە هەڵەیە، دووبارە هەوڵ بدەوە!</div>
@@ -278,7 +279,6 @@
 
     <script>
         function checkPassword() {
-            // دەتوانیت لێرەدا پاسۆردەکە بگۆڕیت بۆ هەر پیت یان ژمارەیەک کە دەتەوێت
             var correctPassword = "SARHANG GARDI"; 
             var userInput = document.getElementById("passInput").value;
             var errorMsg = document.getElementById("errorMsg");
@@ -290,6 +290,13 @@
                 errorMsg.style.display = "block";
             }
         }
+
+        // زیادکردنی تایبەتمەندی کیبۆرد (Enter Key)
+        document.getElementById("passInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
     </script>
 
 </body>
